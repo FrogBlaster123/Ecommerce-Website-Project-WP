@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="orderApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link rel="shortcut icon" href="../assets/icon.png" type="image/.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsiveHome.css">
+    <link rel="stylesheet" href="../css/orders.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="../js/orders.js"></script> 
+</head>
+<body ng-controller="OrderController">
+    <section id="header">
+        <a href="../index.html"><img src="../assets/logo.png" alt="logo" class="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../sub-pages/shop.html">Shop</a></li>
+                <li><a href="../sub-pages/blog.html">Blog</a></li>
+                <li><a href="../sub-pages/about.html">About</a></li>
+                <li><a href="../sub-pages/contact.html">Contact</a></li>
+                <li class="lg-bag">
+                    <a href="../sub-pages/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                </li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="../sub-pages/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </div>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>Order Details</h2>
+        <p>Fill in your shipping details to place your order.</p>
+    </section>
+
+    <section id="order-details" class="section-p1">
+        <!-- Shipping Details Form -->
+        <div class="form-container">
+            <h3>Shipping Details</h3>
+            <form id="order-form" name="orderForm" ng-submit="submitForm(orderForm)" novalidate>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" ng-model="order.fullName" placeholder="Enter your full name" required>
+                    <span class="error" ng-show="orderForm.fullName.$touched && orderForm.fullName.$invalid">Full Name is required.</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" ng-model="order.email" placeholder="Enter your email" required>
+                    <span class="error" ng-show="orderForm.email.$touched && orderForm.email.$invalid">Valid Email is required.</span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" ng-model="order.phone" placeholder="Enter your phone number" required pattern="[0-9]{10}">
+                    <span class="error" ng-show="orderForm.phone.$touched && orderForm.phone.$invalid">
+                        Phone Number must be a 10-digit number.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" ng-model="order.address" placeholder="Enter your address" required>
+                    <span class="error" ng-show="orderForm.address.$touched && orderForm.address.$invalid">Address is required.</span>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" ng-model="order.city" placeholder="Enter your city" required>
+                    <span class="error" ng-show="orderForm.city.$touched && orderForm.city.$invalid">City is required.</span>
+                </div>
+                <div class="form-group">
+                    <label for="postalCode">Postal Code</label>
+                    <input type="text" id="postalCode" name="postalCode" ng-model="order.postalCode" placeholder="Enter your postal code" required pattern="[0-9]{6}">
+                    <span class="error" ng-show="orderForm.postalCode.$touched && orderForm.postalCode.$invalid">
+                        Postal Code must be a 6-digit number.
+                    </span>
+                </div>
+                <button type="submit" class="normal" ng-disabled="orderForm.$invalid">Place Order</button>
+            </form>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="summary-container">
+            <h3>Order Summary</h3>
+            <ul>
+                <li><span>Floral Print Shirt × 1</span> <span>$78.00</span></li>
+                <li><span>Subtotal</span> <span>$78.00</span></li>
+                <li><span>Shipping</span> <span>Free</span></li>
+                <li class="total"><span>Total</span> <span>$78.00</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img src="../assets/logo.png" alt="logo" class="logoS">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong>562 Wellington Road, Street 32, San Francisco</p>
+            <p><strong>Phone:</strong>+01 2222 3665 / (+91) 01 2345 6763</p>
+            <p><strong>Hours:</strong>10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
